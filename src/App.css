@@ -1,0 +1,195 @@
+/* ================= HERO ================= */
+.hero {
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  padding: 20px;
+}
+
+/* PROFILE */
+.profile {
+  width: 150px;
+  height: 150px;
+
+  border-radius: 50%;
+  object-fit: cover;
+
+  border: 2px solid #222;
+  box-shadow: 0 0 25px rgba(255,255,255,0.08);
+
+  margin-bottom: 15px;
+}
+
+/* NAME */
+.name {
+  font-size: 44px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* ROLE */
+.role {
+  font-size: 18px;
+  color: #aaa;
+  margin-top: 10px;
+}
+
+/* BIO */
+.bio {
+  max-width: 650px;
+  margin-top: 20px;
+
+  line-height: 1.7;
+  font-size: 15.5px;
+  color: #cfcfcf;
+}
+
+/* SOCIAL ICONS */
+.social-icons {
+  margin-top: 20px;
+  display: flex;
+  gap: 18px;
+}
+
+.social-icons a {
+  color: #aaa;
+  font-size: 20px;
+  transition: 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* SECTION BUTTONS */
+.section-links {
+  margin-top: 25px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.section-btn {
+  padding: 10px 16px;
+
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+
+  background: #111;
+  color: #ccc;
+
+  border: 1px solid #333;
+  border-radius: 6px;
+
+  transition: 0.3s ease;
+}
+
+.section-btn:hover {
+  background: white;
+  color: black;
+}
+
+/* ================= PROJECTS ================= */
+.projects {
+  padding: 80px 20px;
+  background: #0a0a0a;
+  color: white;
+}
+
+.section-title {
+  font-size: 32px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.project-card {
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 10px;
+  padding: 20px;
+
+  transition: 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: white;
+}
+
+.project-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  font-size: 14px;
+  color: #aaa;
+  line-height: 1.6;
+}
+
+.project-card span {
+  display: block;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #666;
+}
+
+/* ================= ABOUT ================= */
+.about {
+  padding: 80px 20px;
+  text-align: center;
+  background: #0a0a0a;
+  color: white;
+}
+
+.about-text {
+  max-width: 700px;
+  margin: 0 auto;
+  color: #cfcfcf;
+  line-height: 1.7;
+}
+
+.project-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+
+  border-radius: 8px;
+  margin-bottom: 12px;
+
+  border: 1px solid #222;
+  transition: 0.3s ease;
+}
+
+.project-card:hover .project-img {
+  transform: scale(1.03);
+}
+
+.project-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.project-card {
+  cursor: pointer;
+}
