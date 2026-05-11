@@ -121,7 +121,7 @@ const PROJECTS = [
       'Multi-turn conversation loop allows the agent to plan, act, and self-correct across multiple steps.',
       'Demonstrates core agentic concepts: system prompts, tool schemas, and subprocess shell execution.',
     ],
-    link: 'https://github.com/Abd-Salem',
+    link: 'https://github.com/Abd-Salem/build-your-own-claude-code',
   },
 ]
 
