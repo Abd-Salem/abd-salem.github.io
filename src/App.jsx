@@ -4,6 +4,58 @@ import fraudImg from './assets/projects/fraud.jpg'
 import gradImg from './assets/projects/grad.png'
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa"
 
+const SKILLS = [
+  { label: 'Languages',    items: ['Python', 'C++', 'SQL'] },
+  { label: 'ML / DL',      items: ['Scikit-learn', 'PyTorch', 'Focal Loss', 'SMOTE', 'Threshold Tuning'] },
+  { label: 'Tools',        items: ['FastAPI', 'Git', 'Docker', 'Conda', 'Railway'] },
+  { label: 'Concepts',     items: ['End-to-End Pipelines', 'Imbalanced Learning', 'Backpropagation', 'Model Deployment'] },
+]
+
+const PROJECTS = [
+  {
+    title:   'Credit Card Fraud Detection System',
+    img:     fraudImg,
+    alt:     'fraud detection project',
+    metric:  'AUPRC: 85.88% · F1: 85.87%',
+    tags:    ['Imbalanced Dataset', 'SMOTE', 'Random Forest', 'VotingClassifier', 'Focal Loss', 'PyTorch', 'FastAPI'],
+    bullets: [
+      'End-to-end ML pipeline to detect fraudulent transactions on a severely imbalanced dataset (~0.17% fraud rate).',
+      'Full pipeline: EDA, feature engineering, SMOTEENN resampling, RobustScaler, and model evaluation via AUPRC & F2-score.',
+      'Trained and compared LR, RF, KNN, custom PyTorch MLP with Focal Loss, and a soft-voting VotingClassifier.',
+      'Integrated a FastAPI backend for real-time inference — deployed to Railway as a production-ready ML system.',
+    ],
+    link: 'https://github.com/Abd-Salem/Credit-Card-Fraud-Detection',
+  },
+  {
+    title:   'Micrograd Engine',
+    img:     gradImg,
+    alt:     'micrograd engine project',
+    metric:  null,
+    tags:    ['Python', 'OOP', 'Depth-First Search', 'Backpropagation', 'Math'],
+    bullets: [
+      'Forked Karpathy\'s micrograd — a scalar-valued autograd engine — and extended it with additional capabilities.',
+      'Implemented requires_grad flag for selective gradient tracking and blocking accumulation on frozen nodes.',
+      'Added activation functions sigmoid, tanh, exp, and log with correct backward passes from first principles.',
+      'Implemented Binary Cross-Entropy loss and Softmax from scratch, enabling the engine to support classification.',
+    ],
+    link: 'https://github.com/Abd-Salem/micrograd',
+  },
+  {
+    title:   'Agentic AI Pipeline (Claude Code Clone)',
+    img:     null,
+    alt:     'agentic pipeline project',
+    metric:  null,
+    tags:    ['Python', 'Anthropic API', 'Tool Use', 'Agentic AI', 'Subprocess'],
+    bullets: [
+      'Built an agentic Python pipeline using the Anthropic API via OpenRouter, implementing autonomous tool use.',
+      'Supports Bash execution and file writing through structured tool_use / tool_result message loops.',
+      'Multi-turn conversation loop allows the agent to plan, act, and self-correct across multiple steps.',
+      'Demonstrates core agentic concepts: system prompts, tool schemas, and subprocess shell execution.',
+    ],
+    link: 'https://github.com/Abd-Salem',
+  },
+]
+
 export default function App() {
   return (
     <div>
@@ -11,46 +63,32 @@ export default function App() {
       {/* ================= HERO ================= */}
       <div className="hero">
 
-        {/* Profile */}
-        <img src={myPhoto} alt="me" className="profile" />
+        <img src={myPhoto} alt="Abdallah Salem" className="profile" />
 
-        {/* Name */}
         <h1 className="name">Abdallah Salem</h1>
 
-        {/* Role */}
-        <p className="role">
-          Machine Learning Engineer | AI Engineer
-        </p>
+        <p className="role">Machine Learning Engineer</p>
 
-        {/* Bio */}
         <p className="bio">
-          Electrical Engineering graduate specializing in Control & Automation,
+          Electrical Engineering graduate specialising in Control &amp; Automation,
           transitioning into Machine Learning Engineering with a focus on building
-          end-to-end ML systems.
+          end-to-end ML pipelines and production-ready AI systems.
         </p>
 
-        {/* SOCIAL ICONS */}
         <div className="social-icons">
-
-          <a href="https://github.com/Abd-Salem" target="_blank" rel="noreferrer">
+          <a href="https://github.com/Abd-Salem" target="_blank" rel="noreferrer" aria-label="GitHub">
             <FaGithub />
           </a>
-
-          <a href="https://www.linkedin.com/in/abdallah-0-salem/" target="_blank" rel="noreferrer">
+          <a href="https://www.linkedin.com/in/abdallah-0-salem/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
             <FaLinkedin />
           </a>
-
-          <a href="mailto:abdallah.ashraf854@gmail.com">
+          <a href="mailto:abdallah.ashraf854@gmail.com" aria-label="Email">
             <FaEnvelope />
           </a>
-
         </div>
 
-        {/* SECTION BUTTONS */}
         <div className="section-links">
-
           <a href="#projects" className="section-btn">Projects</a>
-
           <a
             href="https://drive.google.com/file/d/1AkAOwTS9UtGkGnw2brSt_MUyEOpWVj7W/view?usp=drive_link"
             target="_blank"
@@ -59,82 +97,82 @@ export default function App() {
           >
             Resume
           </a>
-
           <a href="#about" className="section-btn">About Me</a>
-
         </div>
 
       </div>
 
+      {/* ================= SKILLS ================= */}
+      <section className="skills">
+        <h2 className="section-title">Skills</h2>
+        <div className="skills-grid">
+          {SKILLS.map(({ label, items }) => (
+            <div key={label} className="skill-group">
+              <h4 className="skill-label">{label}</h4>
+              <div className="tags">
+                {items.map(item => (
+                  <span key={item} className="tag">{item}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* ================= PROJECTS ================= */}
       <section id="projects" className="projects">
-
         <h2 className="section-title">Projects</h2>
-
         <div className="projects-grid">
-
-          {/* FRAUD DETECTION PROJECT */}
+          {PROJECTS.map((p) => (
             <a
-              href="https://github.com/Abd-Salem/Credit-Card-Fraud-Detection"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="project-link"
-              >
-              <div className="project-card">
-
-                <h3>Credit Card Fraud Detection System</h3>
-
-                <img src={fraudImg} className="project-img" alt="fraud project" />
-
-                <span>
-                  Imbalanced dataset · Smote · Random-Forest · Voting-Classifier ·  Focal-loss · pytorch · FastAPI
-                </span>
-
-                <p>
-                  • End-to-end machine learning system designed to detect fraudulent credit card transactions for highly imbalanced dataset. <br/>
-                  • The project includes EDA, feature engineering, data resampling, data scaling & classification models.   <br/>
-                  • Trained models: LR, RF, VC, KNN, MLP and MLP with focal loss.   <br/>
-                  • Integrated a FastAPI backend for real-time inference making it a production-ready ML system.    <br/>
-                </p>
-
-              </div>
-          </a>
-
-          <a
-              href="https://github.com/Abd-Salem/micrograd"
+              key={p.title}
+              href={p.link}
               target="_blank"
               rel="noopener noreferrer"
               className="project-link"
             >
               <div className="project-card">
-                <h3>Micrograd Engine</h3>
 
-                <img src={gradImg} className="project-img" alt="fraud project" />
-                <span>Python · OOP · Depth-Search-First · Backpropagation · Math </span>
-                <p>
-                    •	Forked Karpathy's micro-grad, a scalar-valued auto-grad engine, and extended it with additional capabilities beyond the original implementation <br/>
-                    •	Implemented requires grad flag, enabling selective gradient tracking and blocking gradient accumulation for frozen nodes <br/>
-                    •	Added activation functions sigmoid, tanh, exp, and log with correct backward passes derived from first principles <br/>
-                    •	Implemented Binary Cross-Entropy loss and SoftMax from scratch, enabling the engine to support classification tasks <br/>
+                <h3>{p.title}</h3>
 
-                </p>
+                {p.metric && (
+                  <span className="metric-badge">{p.metric}</span>
+                )}
+
+                {p.img
+                  ? <img src={p.img} className="project-img" alt={p.alt} />
+                  : <div className="project-img-placeholder">🤖 Agentic Pipeline</div>
+                }
+
+                <div className="tags">
+                  {p.tags.map(t => (
+                    <span key={t} className="tag">{t}</span>
+                  ))}
+                </div>
+
+                <ul className="project-bullets">
+                  {p.bullets.map((b, i) => (
+                    <li key={i}>{b}</li>
+                  ))}
+                </ul>
+
               </div>
-          </a>
-
+            </a>
+          ))}
         </div>
-
       </section>
 
       {/* ================= ABOUT ================= */}
       <section id="about" className="about">
-
         <h2 className="section-title">About Me</h2>
-
         <p className="about-text">
-          I am passionate about building intelligent systems that connect machine learning with real-world applications.
-          My focus is on end-to-end ML pipelines, model deployment, and production-ready systems in Computer Vision and NLP.
+          I'm an Electrical Engineering graduate (Control &amp; Automation, Benha University)
+          transitioning into Machine Learning Engineering. I build end-to-end ML pipelines —
+          from raw data and feature engineering through model training, evaluation, and deployment.
+          My background in control systems gives me a structured, engineering-first approach to
+          solving ML problems. I'm actively targeting Applied ML Engineer roles and expanding
+          into Generative AI and LLM systems.
         </p>
-
       </section>
 
     </div>
