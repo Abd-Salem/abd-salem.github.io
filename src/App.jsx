@@ -1,14 +1,83 @@
+import { useState, useEffect, useRef } from 'react'
 import './App.css'
 import myPhoto from './assets/personal-photo.jpg'
 import fraudImg from './assets/projects/fraud.jpg'
 import gradImg from './assets/projects/grad.png'
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa"
+import agentImg from './assets/projects/agent.jpeg'
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 
+/* ─────────────────────────────────────────
+   HOOK: Typing effect
+───────────────────────────────────────── */
+function useTypingEffect(text, speed = 70, startDelay = 800) {
+  const [displayed, setDisplayed] = useState('')
+  const [done, setDone]           = useState(false)
+
+  useEffect(() => {
+    let interval = null
+    const timeout = setTimeout(() => {
+      let i = 0
+      interval = setInterval(() => {
+        i++
+        setDisplayed(text.slice(0, i))
+        if (i >= text.length) {
+          clearInterval(interval)
+          setDone(true)
+        }
+      }, speed)
+    }, startDelay)
+
+    return () => {
+      clearTimeout(timeout)
+      if (interval) clearInterval(interval)
+    }
+  }, [text, speed, startDelay])
+
+  return { displayed, done }
+}
+
+/* ─────────────────────────────────────────
+   COMPONENT: Fade-in on scroll
+───────────────────────────────────────── */
+function FadeIn({ children, delay = 0, className = '' }) {
+  const ref                   = useRef(null)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.12 }
+    )
+    if (ref.current) observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [])
+
+  return (
+    <div
+      ref={ref}
+      className={`fade-in ${visible ? 'visible' : ''} ${className}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  )
+}
+
+/* ─────────────────────────────────────────
+   DATA
+───────────────────────────────────────── */
 const SKILLS = [
-  { label: 'Languages',    items: ['Python', 'C++', 'SQL'] },
-  { label: 'ML / DL',      items: ['Scikit-learn', 'PyTorch', 'Focal Loss', 'SMOTE', 'Threshold Tuning'] },
-  { label: 'Tools',        items: ['FastAPI', 'Git', 'Docker', 'Conda', 'Railway'] },
-  { label: 'Concepts',     items: ['End-to-End Pipelines', 'Imbalanced Learning', 'Backpropagation', 'Model Deployment'] },
+  { label: 'Languages',                    items: ['Python', 'C++', 'C', 'HTML', 'CSS'] },
+  { label: 'ML / DL',                      items: [ 'Data Manipulations', 'Supervised Algorithms', 'Unsupervised Algorithms', 'Neural Network',
+                                                     'Backpropagation', 'CNN', 'RNN', 'LSTM'] },
+  { label: 'Dev. tools & Libs',            items: ['Simulink' , 'Git', 'Conda', 'FastAPI', 'scikit-learn', 'Pytorch', 'pandas', 'numpy', 'matplotlib'] },
+  { label: 'Concepts',                     items: ['OOP', 'DS', 'Algorithms', 'Data Concepts', 'Modeling Concepts',
+                                                      'Ensemble Learning' , 'Imbalanced Learning', 'End-to-End Pipelines', 'Model Deployment'] },
 ]
 
 const PROJECTS = [
@@ -20,9 +89,9 @@ const PROJECTS = [
     tags:    ['Imbalanced Dataset', 'SMOTE', 'Random Forest', 'VotingClassifier', 'Focal Loss', 'PyTorch', 'FastAPI'],
     bullets: [
       'End-to-end ML pipeline to detect fraudulent transactions on a severely imbalanced dataset (~0.17% fraud rate).',
-      'Full pipeline: EDA, feature engineering, SMOTEENN resampling, RobustScaler, and model evaluation via AUPRC & F2-score.',
+      'Full pipeline: EDA, feature engineering, SMOTEENN resampling, RobustScaler, evaluated via AUPRC & F2-score.',
       'Trained and compared LR, RF, KNN, custom PyTorch MLP with Focal Loss, and a soft-voting VotingClassifier.',
-      'Integrated a FastAPI backend for real-time inference — deployed to Railway as a production-ready ML system.',
+      'Integrated a FastAPI backend for real-time inference deployed as a production-ready ML system.',
     ],
     link: 'https://github.com/Abd-Salem/Credit-Card-Fraud-Detection',
   },
@@ -33,21 +102,21 @@ const PROJECTS = [
     metric:  null,
     tags:    ['Python', 'OOP', 'Depth-First Search', 'Backpropagation', 'Math'],
     bullets: [
-      'Forked Karpathy\'s micrograd — a scalar-valued autograd engine — and extended it with additional capabilities.',
+      "Forked Karpathy's micrograd — a scalar-valued autograd engine — and extended it with additional capabilities.",
       'Implemented requires_grad flag for selective gradient tracking and blocking accumulation on frozen nodes.',
       'Added activation functions sigmoid, tanh, exp, and log with correct backward passes from first principles.',
-      'Implemented Binary Cross-Entropy loss and Softmax from scratch, enabling the engine to support classification.',
+      'Implemented Binary Cross-Entropy loss and Softmax from scratch, enabling classification support.',
     ],
     link: 'https://github.com/Abd-Salem/micrograd',
   },
   {
     title:   'Agentic AI Pipeline (Claude Code Clone)',
-    img:     null,
+    img:     agentImg,
     alt:     'agentic pipeline project',
     metric:  null,
     tags:    ['Python', 'Anthropic API', 'Tool Use', 'Agentic AI', 'Subprocess'],
     bullets: [
-      'Built an agentic Python pipeline using the Anthropic API via OpenRouter, implementing autonomous tool use.',
+      'Built an agentic Python pipeline using the Anthropic API, implementing autonomous multi-step tool use.',
       'Supports Bash execution and file writing through structured tool_use / tool_result message loops.',
       'Multi-turn conversation loop allows the agent to plan, act, and self-correct across multiple steps.',
       'Demonstrates core agentic concepts: system prompts, tool schemas, and subprocess shell execution.',
@@ -56,26 +125,36 @@ const PROJECTS = [
   },
 ]
 
+/* ─────────────────────────────────────────
+   APP
+───────────────────────────────────────── */
 export default function App() {
+  const { displayed, done } = useTypingEffect('Machine Learning Engineer')
+
   return (
     <div>
 
       {/* ================= HERO ================= */}
       <div className="hero">
 
-        <img src={myPhoto} alt="Abdallah Salem" className="profile" />
+        <img src={myPhoto} alt="Abdallah Salem" className="profile hero-item" style={{ animationDelay: '0.1s' }} />
 
-        <h1 className="name">Abdallah Salem</h1>
+        <h1 className="name hero-item" style={{ animationDelay: '0.25s' }}>
+          Abdallah Salem
+        </h1>
 
-        <p className="role">Machine Learning Engineer</p>
+        <p className="role hero-item" style={{ animationDelay: '0.4s' }}>
+          {displayed}
+          <span className={`cursor ${done ? 'blink' : ''}`}>|</span>
+        </p>
 
-        <p className="bio">
+        <p className="bio hero-item" style={{ animationDelay: '0.55s' }}>
           Electrical Engineering graduate specialising in Control &amp; Automation,
           transitioning into Machine Learning Engineering with a focus on building
           end-to-end ML pipelines and production-ready AI systems.
         </p>
 
-        <div className="social-icons">
+        <div className="social-icons hero-item" style={{ animationDelay: '0.7s' }}>
           <a href="https://github.com/Abd-Salem" target="_blank" rel="noreferrer" aria-label="GitHub">
             <FaGithub />
           </a>
@@ -87,7 +166,7 @@ export default function App() {
           </a>
         </div>
 
-        <div className="section-links">
+        <div className="section-links hero-item" style={{ animationDelay: '0.85s' }}>
           <a href="#projects" className="section-btn">Projects</a>
           <a
             href="https://drive.google.com/file/d/1AkAOwTS9UtGkGnw2brSt_MUyEOpWVj7W/view?usp=drive_link"
@@ -104,75 +183,79 @@ export default function App() {
 
       {/* ================= SKILLS ================= */}
       <section className="skills">
-        <h2 className="section-title">Skills</h2>
+        <FadeIn>
+          <h2 className="section-title">Skills</h2>
+        </FadeIn>
         <div className="skills-grid">
-          {SKILLS.map(({ label, items }) => (
-            <div key={label} className="skill-group">
-              <h4 className="skill-label">{label}</h4>
-              <div className="tags">
-                {items.map(item => (
-                  <span key={item} className="tag">{item}</span>
-                ))}
+          {SKILLS.map(({ label, items }, i) => (
+            <FadeIn key={label} delay={i * 100}>
+              <div className="skill-group">
+                <h4 className="skill-label">{label}</h4>
+                <div className="tags">
+                  {items.map(item => (
+                    <span key={item} className="tag">{item}</span>
+                  ))}
+                </div>
               </div>
-            </div>
+            </FadeIn>
           ))}
         </div>
       </section>
 
       {/* ================= PROJECTS ================= */}
       <section id="projects" className="projects">
-        <h2 className="section-title">Projects</h2>
+        <FadeIn>
+          <h2 className="section-title">Projects</h2>
+        </FadeIn>
         <div className="projects-grid">
-          {PROJECTS.map((p) => (
-            <a
-              key={p.title}
-              href={p.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="project-link"
-            >
-              <div className="project-card">
+          {PROJECTS.map((p, i) => (
+            <FadeIn key={p.title} delay={i * 150}>
+              <a href={p.link} target="_blank" rel="noopener noreferrer" className="project-link">
+                <div className="project-card">
 
-                <h3>{p.title}</h3>
+                  <h3>{p.title}</h3>
 
-                {p.metric && (
-                  <span className="metric-badge">{p.metric}</span>
-                )}
+                  {p.metric && (
+                    <span className="metric-badge">{p.metric}</span>
+                  )}
 
-                {p.img
-                  ? <img src={p.img} className="project-img" alt={p.alt} />
-                  : <div className="project-img-placeholder">🤖 Agentic Pipeline</div>
-                }
+                  {p.img
+                    ? <img src={p.img} className="project-img" alt={p.alt} />
+                    : <div className="project-img-placeholder">🤖 Agentic Pipeline</div>
+                  }
 
-                <div className="tags">
-                  {p.tags.map(t => (
-                    <span key={t} className="tag">{t}</span>
-                  ))}
+                  <div className="tags">
+                    {p.tags.map(t => (
+                      <span key={t} className="tag">{t}</span>
+                    ))}
+                  </div>
+
+                  <ul className="project-bullets">
+                    {p.bullets.map((b, j) => (
+                      <li key={j}>{b}</li>
+                    ))}
+                  </ul>
+
                 </div>
-
-                <ul className="project-bullets">
-                  {p.bullets.map((b, i) => (
-                    <li key={i}>{b}</li>
-                  ))}
-                </ul>
-
-              </div>
-            </a>
+              </a>
+            </FadeIn>
           ))}
         </div>
       </section>
 
       {/* ================= ABOUT ================= */}
       <section id="about" className="about">
-        <h2 className="section-title">About Me</h2>
-        <p className="about-text">
-          I'm an Electrical Engineering graduate (Control &amp; Automation, Benha University)
-          transitioning into Machine Learning Engineering. I build end-to-end ML pipelines —
-          from raw data and feature engineering through model training, evaluation, and deployment.
-          My background in control systems gives me a structured, engineering-first approach to
-          solving ML problems. I'm actively targeting Applied ML Engineer roles and expanding
-          into Generative AI and LLM systems.
-        </p>
+        <FadeIn>
+          <h2 className="section-title">About Me</h2>
+          <p className="about-text">
+            I'm an Electrical Engineering graduate (Control &amp; Automation, Benha University)
+            transitioning into Machine Learning Engineering. I build end-to-end ML pipelines
+            from raw data and feature engineering through model training, evaluation, and deployment.
+            My background in control systems gives me a structured, engineering-first approach to
+            solving ML problems. I'm actively targeting Applied ML Engineer roles (Computer Vision) and able to expand
+            into Generative AI and LLM systems.
+          </p>
+        </FadeIn>
       </section>
 
     </div>
