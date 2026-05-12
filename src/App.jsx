@@ -85,7 +85,7 @@ const PROJECTS = [
     title:   'Credit Card Fraud Detection System',
     img:     fraudImg,
     alt:     'fraud detection project',
-    metric:  'AUPRC: 85.88% · F1: 85.87%',
+    metric:  'AUPRC: 85.88% · F1: 84.75%',
     tags:    ['Imbalanced Dataset', 'SMOTE', 'Random Forest', 'VotingClassifier', 'Focal Loss', 'PyTorch', 'FastAPI'],
     bullets: [
       'End-to-end ML pipeline to detect fraudulent transactions on a severely imbalanced dataset (~0.17% fraud rate).',
