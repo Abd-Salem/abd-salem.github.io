@@ -151,7 +151,7 @@ export default function App() {
         <p className="bio hero-item" style={{ animationDelay: '0.55s' }}>
           Applied Machine Learning Engineering with a focus on building
           end-to-end ML pipelines and production-ready AI systems. Focused on Computer Vision and Gen AI / LLMs
-          , driven by a desire to understand how things work, not just use them.
+          , driven by a desire to understand how things workg.
         </p>
 
         <div className="social-icons hero-item" style={{ animationDelay: '0.7s' }}>
