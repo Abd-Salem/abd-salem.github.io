@@ -236,7 +236,7 @@ export default function App() {
                 </ul>
 
                 <a href={p.link} target="_blank" rel="noopener noreferrer" className="github-btn">
-                  <FaGithub /> GitHub
+                  <FaGithub /> Repo
                 </a>
 
               </div>
