@@ -266,6 +266,28 @@
   transform: scale(1.03);
 }
 
+.github-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #ccc;
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.github-btn:hover {
+  background: white;
+  color: black;
+  border-color: white;
+}
+
 /* PLACEHOLDER for projects without image */
 .project-img-placeholder {
   width: 100%;

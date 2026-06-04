@@ -210,34 +210,36 @@ export default function App() {
         <div className="projects-grid">
           {PROJECTS.map((p, i) => (
             <FadeIn key={p.title} delay={i * 150}>
-              <a href={p.link} target="_blank" rel="noopener noreferrer" className="project-link">
-                <div className="project-card">
+              <div className="project-card">
 
-                  <h3>{p.title}</h3>
+                <h3>{p.title}</h3>
 
-                  {p.metric && (
-                    <span className="metric-badge">{p.metric}</span>
-                  )}
+                {p.metric && (
+                  <span className="metric-badge">{p.metric}</span>
+                )}
 
-                  {p.img
-                    ? <img src={p.img} className="project-img" alt={p.alt} />
-                    : <div className="project-img-placeholder">🤖 Agentic Pipeline</div>
-                  }
+                {p.img
+                  ? <img src={p.img} className="project-img" alt={p.alt} />
+                  : <div className="project-img-placeholder">🤖 Agentic Pipeline</div>
+                }
 
-                  <div className="tags">
-                    {p.tags.map(t => (
-                      <span key={t} className="tag">{t}</span>
-                    ))}
-                  </div>
-
-                  <ul className="project-bullets">
-                    {p.bullets.map((b, j) => (
-                      <li key={j}>{b}</li>
-                    ))}
-                  </ul>
-
+                <div className="tags">
+                  {p.tags.map(t => (
+                    <span key={t} className="tag">{t}</span>
+                  ))}
                 </div>
-              </a>
+
+                <ul className="project-bullets">
+                  {p.bullets.map((b, j) => (
+                    <li key={j}>{b}</li>
+                  ))}
+                </ul>
+
+                <a href={p.link} target="_blank" rel="noopener noreferrer" className="github-btn">
+                  <FaGithub /> GitHub
+                </a>
+
+              </div>
             </FadeIn>
           ))}
         </div>
