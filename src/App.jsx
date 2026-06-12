@@ -83,7 +83,7 @@ const SKILLS = [
 
 const PROJECTS = [
     {
-    title:   'Group Activity Recognition <span style="color:#fb923c">In Progress</span>',
+    title:   'Group Activity Recognition             <span style="color:#fb923c">In Progress</span>',
     img:     groupImg,
     alt:     'Group Activity Classification Project',
     tags:    ['CNN', 'LSTM', 'PyTorch', 'Temporal model'],
