@@ -83,7 +83,7 @@ const SKILLS = [
 
 const PROJECTS = [
     {
-    title:   'Group Activity Recognition',
+    title:   'Group Activity Recognition <span style="color:#fb923c">(In Progress)</span>',
     img:     groupImg,
     alt:     'Group Activity Classification Project',
     tags:    ['CNN', 'LSTM', 'PyTorch', 'Temporal model'],
@@ -101,10 +101,10 @@ const PROJECTS = [
     metric:  'AUPRC: 85.88% · F1: 84.75%',
     tags:    ['Imbalanced Dataset', 'SMOTE', 'Random Forest', 'VotingClassifier', 'Focal Loss', 'PyTorch', 'FastAPI'],
     bullets: [
-      'End-to-end ML pipeline to detect fraudulent transactions on a severely imbalanced dataset (~0.17% fraud rate).',
+      'End-to-end ML pipeline to detect fraudulent transactions on a <strong> severely imbalanced dataset (~0.17% fraud rate)</strong>.',
       'Full pipeline: EDA, feature engineering, SMOTEENN resampling, RobustScaler, evaluated via AUPRC & F2-score.',
-      'Trained and compared LR, RF, KNN, custom PyTorch MLP with Focal Loss, and a soft-voting VotingClassifier.',
-      'Integrated a FastAPI backend for real-time inference deployed as a production-ready ML system.',
+      'Trained and compared <strong>LR, RF, KNN, custom PyTorch MLP with Focal Loss, and a soft-voting VotingClassifier</strong>.',
+      'Integrated a <strong>FastAPI</strong> backend for real-time inference deployed as a production-ready ML system.',
     ],
     link: 'https://github.com/Abd-Salem/Credit-Card-Fraud-Detection',
   },
@@ -115,10 +115,10 @@ const PROJECTS = [
     metric:  null,
     tags:    ['Python', 'OOP', 'Depth-First Search', 'Backpropagation', 'Math'],
     bullets: [
-      "Forked Karpathy's micrograd — a scalar-valued autograd engine — and extended it with additional capabilities.",
+      "Forked Karpathy's micrograd, a scalar-valued autograd engine and extended it with additional capabilities.",
       'Implemented requires_grad flag for selective gradient tracking and blocking accumulation on frozen nodes.',
-      'Added activation functions sigmoid, tanh, exp, and log with correct backward passes from first principles.',
-      'Implemented Binary Cross-Entropy loss and Softmax from scratch, enabling classification support.',
+      'Added activation functions <strong>sigmoid, tanh, exp, and log</strong> with correct backward passes from first principles.',
+      'Implemented <strong>Binary Cross-Entropy loss and Softmax</strong> from scratch, enabling classification support.',
     ],
     link: 'https://github.com/Abd-Salem/micrograd',
   },
@@ -131,8 +131,8 @@ const PROJECTS = [
     bullets: [
       'Built an agentic Python pipeline using the Anthropic API, implementing autonomous multi-step tool use.',
       'Supports Bash execution and file writing through structured tool_use / tool_result message loops.',
-      'Multi-turn conversation loop allows the agent to plan, act, and self-correct across multiple steps.',
-      'Demonstrates core agentic concepts: system prompts, tool schemas, and subprocess shell execution.',
+      'Multi-turn conversation loop allows the agent to <strong>plan, act, and self-correct</strong> across multiple steps.',
+      'Demonstrates <strong>core agentic concepts</strong>: system prompts, tool schemas, and subprocess shell execution.',
     ],
     link: 'https://github.com/Abd-Salem/build-your-own-claude-code',
   },
@@ -225,7 +225,7 @@ export default function App() {
             <FadeIn key={p.title} delay={i * 150}>
               <div className="project-card">
 
-                <h3>{p.title}</h3>
+                <h3 dangerouslySetInnerHTML={{ __html: p.title }} />
 
                 {p.metric && (
                   <span className="metric-badge">{p.metric}</span>
@@ -244,7 +244,7 @@ export default function App() {
 
                 <ul className="project-bullets">
                   {p.bullets.map((b, j) => (
-                    <li key={j}>{b}</li>
+                    <li key={j} dangerouslySetInnerHTML={{ __html: b }} />
                   ))}
                 </ul>
 
