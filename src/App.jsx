@@ -83,7 +83,7 @@ const SKILLS = [
 
 const PROJECTS = [
     {
-    title:   'Group Activity Recognition <span style="color:#fb923c">(In Progress)</span>',
+    title:   'Group Activity Recognition <span style="color:#fb923c">In Progress</span>',
     img:     groupImg,
     alt:     'Group Activity Classification Project',
     tags:    ['CNN', 'LSTM', 'PyTorch', 'Temporal model'],
@@ -116,7 +116,7 @@ const PROJECTS = [
     tags:    ['Python', 'OOP', 'Depth-First Search', 'Backpropagation', 'Math'],
     bullets: [
       "Forked Karpathy's micrograd, a scalar-valued autograd engine and extended it with additional capabilities.",
-      'Implemented requires_grad flag for selective gradient tracking and blocking accumulation on frozen nodes.',
+      'Implemented <strong>requires_grad flag</strong> for selective gradient tracking and blocking accumulation on frozen nodes.',
       'Added activation functions <strong>sigmoid, tanh, exp, and log</strong> with correct backward passes from first principles.',
       'Implemented <strong>Binary Cross-Entropy loss and Softmax</strong> from scratch, enabling classification support.',
     ],
