@@ -130,8 +130,8 @@ const PROJECTS = [
     metric:  null,
     tags:    ['Python', 'Anthropic API', 'Tool Use', 'Agentic AI', 'Subprocess'],
     bullets: [
-      'Built an agentic Python pipeline using the Anthropic API, implementing autonomous multi-step tool use.',
-      'Supports Bash execution and file writing through structured tool_use / tool_result message loops.',
+      'Built an agentic Python pipeline using the <strong>Anthropic API</strong>, implementing autonomous multi-step tool use.',
+      'Supports Bash execution and file writing through structured <strong>tool_use / tool_result message loops</strong>.',
       'Multi-turn conversation loop allows the agent to <strong>plan, act, and self-correct</strong> across multiple steps.',
       'Demonstrates <strong>core agentic concepts</strong>: system prompts, tool schemas, and subprocess shell execution.',
     ],
