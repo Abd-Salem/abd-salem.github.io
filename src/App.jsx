@@ -83,7 +83,8 @@ const SKILLS = [
 
 const PROJECTS = [
     {
-    title:   'Group Activity Recognition - <span style="color:#fb923c">In Progress</span>',
+    title:   'Group Activity Recognition',
+    inProgress: true,
     img:     groupImg,
     alt:     'Group Activity Classification Project',
     tags:    ['CNN', 'LSTM', 'PyTorch', 'Temporal model'],
@@ -226,6 +227,9 @@ export default function App() {
               <div className="project-card">
 
                 <h3 dangerouslySetInnerHTML={{ __html: p.title }} />
+                {p.inProgress && (
+                  <span className="in-progress-badge">🚧 In Progress</span>
+                )}
 
                 {p.metric && (
                   <span className="metric-badge">{p.metric}</span>
