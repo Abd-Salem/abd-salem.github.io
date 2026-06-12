@@ -4,6 +4,7 @@ import myPhoto from './assets/personal-photo.jpg'
 import fraudImg from './assets/projects/fraud.jpg'
 import gradImg from './assets/projects/grad.png'
 import agentImg from './assets/projects/agent.jpeg'
+import groupImg from './assets/projects/group.png'
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 
 /* ─────────────────────────────────────────
@@ -81,6 +82,18 @@ const SKILLS = [
 ]
 
 const PROJECTS = [
+    {
+    title:   'Group Activity Recognition',
+    img:     groupImg,
+    alt:     'Group Activity Classification Project',
+    tags:    ['CNN', 'LSTM', 'PyTorch', 'Temporal model'],
+    bullets: [
+      'In group activity recognition, the temporal dynamics of the whole activity can be inferred based on the dynamics of the individual people representing the activity.',
+      'I will build a deep model to capture these edynamics based on LSTM models',
+      'LSTM model will be designed to represent action dynamics of individual people in a sequence and another LSTM model will be designed to aggregate person-level information for whole activity understanding.'
+    ],
+    link: 'https://github.com/Abd-Salem/group-activity-recognition',
+  },
   {
     title:   'Credit Card Fraud Detection System',
     img:     fraudImg,
