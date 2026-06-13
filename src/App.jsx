@@ -87,7 +87,7 @@ const PROJECTS = [
     inProgress: true,
     img:     groupImg,
     alt:     'Group Activity Classification Project',
-    tags:    ['CNN', 'LSTM', 'PyTorch', 'Temporal model'],
+    tags:    ['CNN', 'LSTM', 'PyTorch', 'Temporal modeling'],
     bullets: [
       'In group activity recognition, the temporal dynamics of the whole activity can be inferred based on the dynamics of the individual people representing the activity.',
       'I will build a deep model to capture these dynamics based on LSTM models',
