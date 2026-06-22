@@ -83,7 +83,7 @@ const SKILLS = [
 
 const PROJECTS = [
     {
-    title:   'Group Activity Recognition',
+    title:   'Group Activity Recognition (CVPR)',
     inProgress: true,
     img:     groupImg,
     alt:     'Group Activity Classification Project',
