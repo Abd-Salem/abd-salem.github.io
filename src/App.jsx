@@ -76,8 +76,8 @@ const SKILLS = [
   { label: 'Languages',                    items: ['Python', 'C++', 'C', 'HTML', 'CSS'] },
   { label: 'ML / DL',                      items: [ 'Data Manipulations', 'Supervised Algorithms', 'Unsupervised Algorithms', 'Neural Network',
                                                      'Backpropagation', 'CNN', 'RNN', 'LSTM'] },
-  { label: 'Dev. tools & Libs',            items: ['Simulink' , 'Git', 'Conda', 'FastAPI', 'OpenCV', 'Pytorch', 'scikit-learn','pandas', 'numpy', 'matplotlib'] },
-  { label: 'Concepts',                     items: ['OOP', 'DS', 'Algorithms', 'Data Concepts', 'Modeling Concepts',
+  { label: 'Dev. tools & Libs',            items: ['Simulink' , 'Git', 'Conda', 'FastAPI', 'OpenCV', 'PIL/Pillow', 'torchvision','Pytorch', 'scikit-learn','pandas', 'numpy', 'matplotlib'] },
+  { label: 'Concepts',                     items: ['Problem Solving','OOP', 'DS', 'Algorithms', 'Data Concepts', 'Modeling Concepts',
                                                       'Ensemble Learning' , 'Imbalanced Learning', 'End-to-End Pipelines', 'Model Deployment'] },
 ]
 
